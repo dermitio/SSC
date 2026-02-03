@@ -140,7 +140,7 @@ function broadcast(message) {
 }
 
 // ─── Start server ─────────────────────────────────────────
-server.listen(25565, () => {
-  console.log("Secure chat running at https://localhost:25565");
+server.listen(25564, "0.0.0.0", () => {
+  console.log("Simple Secure Chat running at https://localhost:25564");
 });
 
