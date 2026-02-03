@@ -77,7 +77,3 @@ Built by **Dermitio**.
 Development was assisted via ChatGPT due to a severe lack of energy and a whole load of "I cant be bothered to find bug #23454332124356754 and then try to fix it".
 
 ---
-
-## License
-
-MIT (or whatever you want to put here)
