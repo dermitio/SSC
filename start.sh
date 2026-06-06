@@ -5,7 +5,7 @@ export PORT="${PORT:-25564}"
 
 # WebRTC TURN defaults for the local coturn setup.
 # Override TURN_HOST, TURN_REALM, and TURN_SECRET in your shell/service config.
-export TURN_HOST="${TURN_HOST:-dermitio.duckdns.org}"
+export TURN_HOST="${TURN_HOST:-[IP/DOMAIN]}"
 export TURN_ALT_HOSTS="${TURN_ALT_HOSTS:-}"
 export TURN_REALM="${TURN_REALM:-$TURN_HOST}"
 export TURN_PORT="${TURN_PORT:-25510}"

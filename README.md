@@ -111,22 +111,23 @@ Then set these values for your host:
 - `realm` and `server-name` to your public chat hostname
 - `relay-ip` to the machine's private/VPN IP if coturn is behind NAT
 - `external-ip` to `PUBLIC_IP/PRIVATE_IP` if coturn is behind NAT
-- `static-auth-secret` to a long random secret
+-  `TURN_SECRET` value to be set with a secret
+-  `[IP/DOMAIN]` to be swapped with your ip/domain name
 
 The matching app environment should use the same host, realm, and secret:
 
 ```sh
 TURN_HOST=chat.example.com \
 TURN_REALM=chat.example.com \
-TURN_SECRET=replace-with-the-same-long-random-secret \
+TURN_SECRET=replace-with-the-long-random-turn-secret \
 npm start
 ```
 
 The included `start.sh` and `start.bat` set these defaults:
 
 ```text
-TURN_HOST=dermitio.duckdns.org
-TURN_REALM=dermitio.duckdns.org
+TURN_HOST=[IP/DOMAIN]
+TURN_REALM=[IP/DOMAIN]
 TURN_PORT=25510
 TURN_RELAY_MIN_PORT=30000
 TURN_RELAY_MAX_PORT=30030
@@ -179,6 +180,7 @@ Just keep bashing your head into it until it works again.
 
 Built by **Dermitio**.
 
-Development was assisted via ChatGPT due to a severe lack of energy and a whole load of "I cant be bothered to find bug #23454332124356754 and then try to fix it".
+Development was assisted via Codex due to a severe lack of energy and a whole load of "I cant be bothered to find bug #23454332124356754 and then try to fix it".
+Also VoIP is pain.
 
 ---
