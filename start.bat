@@ -22,6 +22,6 @@ if "%TURN_SECRET%"=="" set "TURN_SECRET="
 echo Starting SSC...
 echo App: https://%TURN_HOST%:%PORT%
 echo TURN: %TURN_HOST%:%TURN_PORT%, alternates %TURN_ALT_HOSTS%, relay ports %TURN_RELAY_MIN_PORT%-%TURN_RELAY_MAX_PORT%
-echo TURN modes: relay-only=%TURN_RELAY_ONLY%, stun=%TURN_ENABLE_STUN%, tcp=%TURNdermitio.duckdns.org_ENABLE_TCP%
+echo TURN modes: relay-only=%TURN_RELAY_ONLY%, stun=%TURN_ENABLE_STUN%, tcp=%TURN_ENABLE_TCP%
 node server.js
 pause
