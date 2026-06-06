@@ -6,6 +6,8 @@ cert/
 .env.*
 secret
 tree.txt
+.start.sh
+turnserver_self.conf
 
 # runtime/user data
 chat.log.gz
