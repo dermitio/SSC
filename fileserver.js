@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import { pipeline } from "stream";
 import { Transform } from "stream";
+import { lookup } from "mime-types";
 
 const FILE_DIR = "./public/files";
 const MAX_FILES = 10;
@@ -70,6 +71,25 @@ export function handleFileRequest(req, res) {
     return true;
   }
 
+  // GET /files/:filename
+  if (req.method === "GET" && url.pathname.startsWith("/files/")) {
+    const filename = sanitize(decodeURIComponent(url.pathname.slice("/files/".length)));
+    const target = path.join(FILE_DIR, filename);
+
+    if (!filename || !fs.existsSync(target) || !fs.statSync(target).isFile()) {
+      res.writeHead(404);
+      res.end("File not found");
+      return true;
+    }
+
+    res.writeHead(200, {
+      "Content-Type": lookup(target) || "application/octet-stream",
+      "Content-Length": fs.statSync(target).size
+    });
+    fs.createReadStream(target).pipe(res);
+    return true;
+  }
+
   // POST /files/upload
   if (req.method === "POST" && url.pathname === "/files/upload") {
     const filename = sanitize(url.searchParams.get("name") || "");
@@ -80,17 +100,16 @@ export function handleFileRequest(req, res) {
       return true;
     }
 
-const files = listFiles();
-if (files.length >= MAX_FILES) {
-  deleteOldestFile();
-}
-
-
     const target = path.join(FILE_DIR, filename);
     if (fs.existsSync(target)) {
       res.writeHead(409);
       res.end("File already exists");
       return true;
+    }
+
+    const files = listFiles();
+    if (files.length >= MAX_FILES) {
+      deleteOldestFile();
     }
 
     const limiter = new SizeLimit(MAX_FILE_SIZE);
@@ -114,4 +133,3 @@ if (files.length >= MAX_FILES) {
 
   return false;
 }
-

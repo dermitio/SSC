@@ -3,8 +3,15 @@
   "version": "1.0.0",
   "private": true,
   "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 0.0.0.0",
+    "build": "astro build",
+    "preview": "astro preview --host 0.0.0.0",
+    "start": "node server.js"
+  },
   "dependencies": {
+    "astro": "^6.3.8",
     "mime-types": "^3.0.2",
-    "ws": "^8.16.0"
+    "ws": "^8.21.0"
   }
 }

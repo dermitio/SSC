@@ -2,14 +2,22 @@
 cert/
 *.pem
 *.key
+.env
+.env.*
+secret
+tree.txt
 
-# runtime data
+# runtime/user data
 chat.log.gz
 public/files/*
 public/audio/*
+!public/files/.gitkeep
+!public/audio/.gitkeep
 
-# node
+# build/cache
 node_modules/
+dist/
+.astro/
 
 # OS junk
 .DS_Store
